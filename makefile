@@ -15,12 +15,13 @@ all: img
 
 img: setup
 	$(AS) $(ASFLAGS) src/Kernel/kernel_entry.asm -o Bin/kernel_entry.o
+	$(CC) $(CFLAGS) src/Kernel/AsmToC.c -o Bin/AsmToC.o
 	$(CC) $(CFLAGS) src/Kernel/kernel.c -o Bin/kernel.o
 	$(CC) $(CFLAGS) src/Driver/Io.c -o Bin/Io.o
 	$(CC) $(CFLAGS) src/Driver/Keyboard/Driver.c -o Bin/Key.o
 	$(CC) $(CFLAGS) src/Driver/Video/Driver.c -o Bin/Video.o
 	$(CC) $(CFLAGS) src/cpu/idt.c -o Bin/idt.o
-	$(LD) $(LDFLAGS) Bin/kernel_entry.o Bin/kernel.o Bin/Io.o Bin/Video.o Bin/Key.o Bin/idt.o -o Bin/kernel.bin
+	$(LD) $(LDFLAGS) Bin/kernel_entry.o Bin/kernel.o Bin/Io.o Bin/Video.o Bin/Key.o Bin/idt.o Bin/AsmToC.o -o Bin/kernel.bin
 	$(AS) -fbin src/Bootloader/boot.asm -o Bin/boot.bin
 	#cat Bin/boot.bin Bin/kernel.bin  > Jaurix.img
 	dd if=/dev/zero of=Jaurix.img bs=1024 count=1440 2>/dev/null

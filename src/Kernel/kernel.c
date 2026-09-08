@@ -1,8 +1,4 @@
 #include "kernel.h"
-void ASMCommand(const char* ASM)
-{
-    __asm__ __volatile__("cli");
-}
 void kmain()
 {
     IdtInitialize();
@@ -21,6 +17,6 @@ void kmain()
     int i = 0 / 0;
     while (1)
     {
-        ASMCommand("hlt");
+        hlt();
     }
 }

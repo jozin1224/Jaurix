@@ -17,9 +17,10 @@ IDT
 */
 
 #include "../cpu/idt.h"
-
+/*
+ASM fuinctions
+*/
+#include "AsmToC.h"
 /*
 Kernel libs
 */
-
-void ASMCommand(const char* ASM);
