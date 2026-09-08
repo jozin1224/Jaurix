@@ -2,6 +2,7 @@
 
 void kmain()
 {
+    Clean();
     printf("Hello world!!");
     while(1);
 }
