@@ -2,8 +2,24 @@
 
 #include "../Inc/stdint.h"
 /*
-Drivers
+Drivers:
+IO
+KEYBOARD
+VIDEO
 */
 #include "../Driver/Io.h"
 #include "../Driver/Keyboard/Driver.h"
 #include "../Driver/Video/Driver.h"
+
+/*
+CPU:
+IDT
+*/
+
+#include "../cpu/idt.h"
+
+/*
+Kernel libs
+*/
+
+void ASMCommand(const char* ASM);

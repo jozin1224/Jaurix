@@ -11,4 +11,5 @@ static const char kbd_map[128] = {
   ' ',  0
 };
 
-static inline char get_pressed_key(void);
+char GetPressedKey(void);
+int IsValid(char Char);

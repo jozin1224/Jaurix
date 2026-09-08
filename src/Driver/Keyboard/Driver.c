@@ -1,6 +1,6 @@
 #include "Driver.h"
 
-static inline char get_pressed_key(void) {
+char GetPressedKey(void) {
     if ((inb(KBD_STATUS_PORT) & 1) == 0) {
         return 0;
     }
@@ -16,4 +16,8 @@ static inline char get_pressed_key(void) {
     }
     
     return 0;
+}
+
+int IsValid(char Char) {   // Yes, i am gmod modder
+    return (Char >= 32 && Char <= 126) || Char == '\b' || Char == '\r' || Char == '\n'; // Valid char for keyboard
 }
