@@ -31,3 +31,9 @@ ASM fuinctions
 Defines
 */
 #define VOID void
+
+/*
+Kernel
+*/
+
+void Restart();
