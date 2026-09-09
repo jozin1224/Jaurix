@@ -7,7 +7,9 @@ I chose C instead of C++ because there are several systems using C, and also bec
 # 🐱 Todo
 * [X] ~~*Create a TERMINAL*~~ [2026-09-09]
 * [X] ~~*Create Cool Commands*~~ [2026-09-09]
-  
+* [ ] Create Basic Apps
+* [ ] More Drivers
+
 # ⚠️ Known problems
 (FIXED) Compiling and starting the ISO version causes a disk error. Therefore, it is recommended to use the IMG version.
 
