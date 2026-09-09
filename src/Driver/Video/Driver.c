@@ -50,6 +50,11 @@ void WriteChar(char c, uint8_t color) {
     if (cursor_row >= 25) {
         cursor_row = 0;
     }
+    if (Lines >= 24)
+    {
+        Clean();
+        Lines = 0;
+    }
     MoveCursor(cursor_col, cursor_row);
 }        
 

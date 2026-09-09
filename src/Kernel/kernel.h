@@ -26,3 +26,14 @@ IDT
 ASM fuinctions
 */
 #include "AsmToC.h"
+
+/*
+Defines
+*/
+#define VOID void
+
+/*
+Kernel
+*/
+
+void Restart();

@@ -5,9 +5,11 @@ While JOS has very strange code (like not having a kernel.h file), Jaurix will b
 I chose C instead of C++ because there are several systems using C, and also because C++ is wake in OS Dev.
 
 # 🐱 Todo
-* [ ] Create a TERMINAL
-* [ ] Create Cool Commands
-  
+* [X] ~~*Create a TERMINAL*~~ [2026-09-09]
+* [X] ~~*Create Cool Commands*~~ [2026-09-09]
+* [ ] Create Basic Apps
+* [ ] More Drivers
+
 # ⚠️ Known problems
 (FIXED) Compiling and starting the ISO version causes a disk error. Therefore, it is recommended to use the IMG version.
 

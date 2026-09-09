@@ -11,3 +11,7 @@ typedef unsigned long      DWORD;
 #define NULL ((void*)0)
 #define TRUE 1
 #define FALSE 0
+typedef int INT;
+typedef float FLOAT;
+typedef double DOUBLE;
+typedef char CHAR;
