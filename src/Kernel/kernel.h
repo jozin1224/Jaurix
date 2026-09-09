@@ -1,6 +1,11 @@
 #pragma once
 
 #include "../Inc/stdint.h"
+
+
+
+
+
 /*
 Drivers:
 IO
@@ -21,6 +26,3 @@ IDT
 ASM fuinctions
 */
 #include "AsmToC.h"
-/*
-Kernel libs
-*/
