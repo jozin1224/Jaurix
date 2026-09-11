@@ -2,19 +2,17 @@
 
 #include "../Inc/stdint.h"
 
-
-
-
-
 /*
 Drivers:
 IO
 KEYBOARD
 VIDEO
+SERIAL
 */
 #include "../Driver/Io.h"
 #include "../Driver/Keyboard/Driver.h"
 #include "../Driver/Video/Driver.h"
+#include "../Driver/Serial/Driver.h"
 
 /*
 CPU:
@@ -36,4 +34,5 @@ Defines
 Kernel
 */
 
+#include "AppsLocate.h"
 void Restart();

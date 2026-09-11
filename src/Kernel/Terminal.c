@@ -47,14 +47,26 @@ void cin(char* buffer, int bufferSize) {
 
 VOID CommandProcesser(char* Command)
 {
+    PrintSerial("[TERMIANL] Command = ");
+    PrintSerial(Command);
+    PrintSerial("\n");
     if (strcmp(Command, "clear"))
     {
         Clean();
+        return;
+    }
+    else if (strcmp(Command, "Note"))
+    {
+        NoteMain();
+        printf("\n");
+        EnableScroll();
+        return;
     }
     else if (strcmp(Command, "osver"))
     {
         printf("Jaurix Ver 0.01\n");
         printf("This operating system doesn't run Doom :(\n");
+        return;
     }
     else if(strcmp(Command, "echo"))
     {
@@ -64,6 +76,23 @@ VOID CommandProcesser(char* Command)
         printf("\n");
         printf(Buffer);
         printf("\n");
+        return;
+    }
+    else if(strcmp(Command, "TerminalEngine"))
+    {
+        printf("Termial Engine 1.0.0 by Jozin1224");
+        printf("\n");
+        return;
+    }
+    else if(strcmp(Command, "echoSerial"))
+    {
+        char Buffer[50];
+        printf("Say Message: ");
+        cin(Buffer, 50);
+        PrintSerial("\n");
+        PrintSerial(Buffer);
+        PrintSerial("\n");
+        return;
     }
     else if (strcmp(Command, "reboot")) { 
         char Buffer[2]; 
@@ -85,16 +114,20 @@ VOID CommandProcesser(char* Command)
     }
     if (strcmp(Command, "help"))
     {
-        printf("Cool commands:\n\nclear: Clear screen\nosver: Show Jaurix Infos\necho: Show Cool Texts\nreboot: reboot\n");
+        printf("Cool commands:\n\nclear: Clear screen\nTerminalEngine: Show terminal engine info\nosver: Show Jaurix Infos\necho: Show Cool Texts\necho: Show Cool Texts on Serial\nreboot: reboot\nNote: A Basic Note app to type things\n");
+        return;
     }
     else if (Command[0] == '\0')
     {
+        return;
     }
     else
     {
         printf("\"");
         printf(Command);
         printf("\" Is not a valid command\n");
+        PrintSerial("[TERMINAL] INVALID COMMAND\n");
+        return;
     }
 }
 
@@ -102,8 +135,9 @@ void TerminalMain(void)
 {
     printfEx("[ OK ]", 0x0A);
     printfEx(" Terminal Loaded\n", 0x07);
+    SetProtectedZone(0);
     printfEx("jaurix@jaurix#> ", 0x0A);
-    
+    SetProtectedZone(1);
     char Buffer[COMMAND_BUFFERSIZE] = {0};
     int i = 0;
 
@@ -118,7 +152,9 @@ void TerminalMain(void)
                 CommandProcesser(Buffer);
                 Buffer[0] = '\0';
                 i = 0;
+                SetProtectedZone(0);
                 printfEx("jaurix@jaurix#> ", 0x0A);
+                SetProtectedZone(1);
             } 
             else if (Key == '\b') {
                 if (i > 0) {
