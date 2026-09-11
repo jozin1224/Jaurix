@@ -1,5 +1,5 @@
 ; Yes, I used JOS bootloader
-
+; It is recommended that new developers do not modify anything here.
 [BITS 16]
 [ORG 0X7C00]
 
