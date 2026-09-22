@@ -1,6 +1,5 @@
 #include "kernel.h"
 #include "Terminal.h"
-
 void Restart() {
     PrintSerial("[KERNEL] REBOOT\n");
     uint8_t status;
@@ -15,7 +14,7 @@ void Restart() {
     __asm__ volatile ("lidt %0; int3" : : "m"((uint16_t){0})); 
 }
 
-void kmain()
+void kmain(struct multiboot_info* mb_info)
 {
     InitSerial();
     IdtInitialize();
@@ -32,4 +31,7 @@ void kmain()
     {
         hlt();
     }
+
+
+
 }

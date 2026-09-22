@@ -8,6 +8,7 @@ int NoteMain()
     printf("\n");
     while(1)
     {
+        SetProtectedZone(0);
         PrintAt("JOZIN BASIC NOTE 1.0        TO EXIT PRES CTRL + C                               ", 0, 0, 0x70);
         CHAR Key = GetPressedKey();
         if (ctrl && Key == 'c')

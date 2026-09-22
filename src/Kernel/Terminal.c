@@ -1,4 +1,4 @@
-#pragma once
+
 /*
 
                                                                                                                                                                                                                                                                                                                            
@@ -11,6 +11,7 @@
                         BY JOZIN1224                                                            
 
 */
+
 #include "Terminal.h"
 
 char GetPressedKey(void);
@@ -44,7 +45,7 @@ void cin(char* buffer, int bufferSize) {
         }     
     } 
 }
-
+ 
 VOID CommandProcesser(char* Command)
 {
     PrintSerial("[TERMIANL] Command = ");

@@ -1,20 +1,17 @@
 ENTRY(_start)
-OUTPUT_FORMAT("binary")
 
 SECTIONS
 {
-    . = 0x1000;
+    . = 1M; /* Garante o carregamento em 1 Megabyte */
 
-    .text : {
-        *(.boot)
+    .text : AT(ADDR(.text))
+    {
+        *(.multiboot)    /* Captura o cabeçalho Multiboot */
+        . = ALIGN(4);    /* Força alinhamento estrito de 4 bytes */
         *(.text)
     }
 
-    .data : {
-        *(.data)
-    }
-
-    .bss : {
-        *(.bss)
-    }
+    .rodata : { *(.rodata) }
+    .data   : { *(.data) }
+    .bss    : { *(.bss) }
 }

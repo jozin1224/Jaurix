@@ -29,7 +29,7 @@ ASM fuinctions
 Defines
 */
 #define VOID void
-
+#define INFINITY (*(const float *)(const unsigned int []){ 0x7F800000 })
 /*
 Kernel
 */
