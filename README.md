@@ -19,7 +19,7 @@ I chose C instead of C++ because there are several systems using C, and also bec
 User: root
 Password: root
 
-User: Goku
+User: goku
 Password: 1234
 
 # 😎 Cool Image
