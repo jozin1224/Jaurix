@@ -33,6 +33,6 @@ Defines
 /*
 Kernel
 */
-
+#include "../user/user.h"
 #include "AppsLocate.h"
 void Restart();

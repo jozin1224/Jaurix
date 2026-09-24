@@ -19,7 +19,9 @@ void kmain(struct multiboot_info* mb_info)
     InitSerial();
     IdtInitialize();
     PrintSerial("[TERMINAL] IDT LOAD\n");
-    Clean();
+    CreateUser("root", "root", 1);
+    CreateUser("goku", "1234", 0);
+    Login();
     SetProtectedZone(0);
     printfEx("[ OK ]", 0xA);
     printf(" Kernel Loaded\n");

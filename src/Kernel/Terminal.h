@@ -20,6 +20,7 @@
 char GetPressedKey(void);
 int IsValid(char Char);
 int strcmp(const char *s1, const char *s2);
+int strcmp2(const char *s1, const char *s2);
 VOID CommandProcesser(char* Command);
 void TerminalMain(void);
 void cin(char* buffer, int bufferSize);

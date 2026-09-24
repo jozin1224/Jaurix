@@ -13,7 +13,7 @@
 */
 
 #include "Terminal.h"
-
+User LoginUser;
 char GetPressedKey(void);
 int IsValid(char Char);
 
@@ -24,26 +24,37 @@ int strcmp(const char *s1, const char *s2) {
     }
     return !(*(const unsigned char*)s1 - *(const unsigned char*)s2);
 }
+int strcmp2(const char *s1, const char *s2) {
+    while (*s1 && (*s1 == *s2)) {
+        s1++;
+        s2++;
+    }
+    return (*(const unsigned char*)s1 - *(const unsigned char*)s2);
+}
 void cin(char* buffer, int bufferSize) {     
     int i = 0;      
-    while(1)     
-    {         
-        char Key = GetPressedKey();         
-        if (IsValid(Key))         
-        {             
-            WriteChar(Key, 0xF);                          
-            if (Key == '\n')             
-            {                 
+    while(1)
+    {
+        char Key = GetPressedKey();
+        if (IsValid(Key)) {
+            WriteChar(Key, 0xF);
+            
+            if (Key == '\n') {
                 buffer[i] = '\0';
                 return;
-            }             
-            else if (i < bufferSize - 1)             
-            {                 
-                buffer[i] = Key;                 
-                i++;             
-            }         
-        }     
-    } 
+            } 
+            else if (Key == '\b') {
+                if (i > 0) {
+                    i--;
+                    buffer[i] = '\0';
+                }
+            } 
+            else if (i < COMMAND_BUFFERSIZE - 1) {
+                buffer[i] = Key;
+                i++;
+            }
+        }
+    }
 }
  
 VOID CommandProcesser(char* Command)
@@ -61,6 +72,11 @@ VOID CommandProcesser(char* Command)
         NoteMain();
         printf("\n");
         EnableScroll();
+        return;
+    }
+    else if (strcmp(Command, "logoff"))
+    {
+        Login();
         return;
     }
     else if (strcmp(Command, "osver"))
@@ -134,10 +150,12 @@ VOID CommandProcesser(char* Command)
 
 void TerminalMain(void)
 {
+    LoginUser = ReturnAtualUser();
     printfEx("[ OK ]", 0x0A);
     printfEx(" Terminal Loaded\n", 0x07);
     SetProtectedZone(0);
-    printfEx("jaurix@jaurix#> ", 0x0A);
+    printfEx(LoginUser.Name, 0x0A);
+    printfEx("@jaurix#> ", 0x0A);
     SetProtectedZone(1);
     char Buffer[COMMAND_BUFFERSIZE] = {0};
     int i = 0;
@@ -154,7 +172,8 @@ void TerminalMain(void)
                 Buffer[0] = '\0';
                 i = 0;
                 SetProtectedZone(0);
-                printfEx("jaurix@jaurix#> ", 0x0A);
+                printfEx(LoginUser.Name, 0x0A);
+                printfEx("@jaurix#> ", 0x0A);
                 SetProtectedZone(1);
             } 
             else if (Key == '\b') {

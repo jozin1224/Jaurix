@@ -20,7 +20,8 @@ kernel_bin: setup
 	$(CC) $(CFLAGS) src/Driver/Serial/Driver.c -o Bin/Serial.o
 	$(CC) $(CFLAGS) src/Driver/Video/Driver.c -o Bin/Video.o
 	$(CC) $(CFLAGS) src/cpu/idt.c -o Bin/idt.o
-	$(LD) $(LDFLAGS) Bin/kernel_entry.o Bin/kernel.o Bin/Io.o Bin/Serial.o Bin/Video.o Bin/Key.o Bin/idt.o Bin/AsmToC.o Bin/Terminal.o Bin/Note.o -o Bin/kernel.bin
+	$(CC) $(CFLAGS) src/user/user.c -o Bin/user.o
+	$(LD) $(LDFLAGS) Bin/kernel_entry.o Bin/user.o Bin/kernel.o Bin/Io.o Bin/Serial.o Bin/Video.o Bin/Key.o Bin/idt.o Bin/AsmToC.o Bin/Terminal.o Bin/Note.o -o Bin/kernel.bin
 
 iso: kernel_bin
 	mkdir -p iso_root/boot/grub

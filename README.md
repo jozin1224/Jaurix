@@ -13,6 +13,15 @@ I chose C instead of C++ because there are several systems using C, and also bec
 # ⚠️ Known problems
 (FIXED) Compiling and starting the ISO version causes a disk error. Therefore, it is recommended to use the IMG version.
 
+
+# 🧔‍♀️ Users
+
+User: root
+Password: root
+
+User: Goku
+Password: 1234
+
 # 😎 Cool Image
 ![Super Duper mega cool image](Images/coolimage.webp)
 
